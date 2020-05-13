@@ -1,18 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const ctrlBooks = require('../controllers/books');
+const ctrlOthers = require('../controllers/others');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+/* Locations pages */
+router.get('/', ctrlBooks.homelist);
+router.get('/book', ctrlBooks.bookInfo);
+router.get('/book/review/new', ctrlBooks.addReview);
 
-router.get('/info', function(req, res, next) {
-  res.render('book-info', { title: 'Book Info' });
-});
-
-router.get('/add-review', function(req, res, next) {
-  res.render('book-review-form', { title: 'Review Book' });
-});
-
+/* Other pages */
+router.get('/about', ctrlOthers.about);
 
 module.exports = router;
