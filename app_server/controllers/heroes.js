@@ -2,16 +2,16 @@ const homelist = (req, res) => {
     res.render('index', { title: 'Home' });
   };
 
-  const bookInfo = (req, res) => {
-    res.render('book-info', { title: 'Book Info' });
+  const heroInfo = (req, res) => {
+    res.render('hero-info', { title: 'Hero Info' });
   };
 
   const addReview = (req, res) => {
-    res.render('book-review-form', { title: 'Add review' });
+    res.render('hero-review-form', { title: 'Add review' });
   };
 
   module.exports = {
     homelist,
-    bookInfo,
+    heroInfo,
     addReview
   };
