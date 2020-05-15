@@ -24,138 +24,34 @@ block content
         .panel
           .panel-body
             // /stories
-            .row
-              br
-              |
-              .col-md-2.col-sm-3.text-center
-                a.story-title(href='#')
-                  img.img-circle(alt='' src='https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/images/md/620-spider-man.jpg' style='width:100px;height:100px')
-              |
-              .col-md-10.col-sm-9
-                h3 Spiderman
+            each hero in heroes
+              .row
+                br
                 |
-                .row
-                  .col-xs-9
-                    h4
-                      span.label.label-default Marvel
-                    h4
-                      small.text-muted(style="font-family:courier,'new courier';")
-                        | 2 Reviews  &bull;
-                        a.text-muted(href='#') Read More
+                .col-md-2.col-sm-3.text-center
+                  a.story-title(href='#')
+                    img.img-circle(alt='' src=hero.image_url style='width:100px;height:100px')
+                |
+                .col-md-10.col-sm-9
+                  h3= hero.name
                   |
-                  .col-xs-3
-                |
-                br
-                br
-            |
-            hr
-            |
-            |
-            .row
-              br
-              |
-              .col-md-2.col-sm-3.text-center
-                a.story-title(href='#')
-                  img.img-circle(alt='' src='https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/images/lg/346-iron-man.jpg' style='width:100px;height:100px')
-              |
-              .col-md-10.col-sm-9
-                h3 Iron Man
-                |
-                .row
-                  .col-xs-9
-                    h4
-                      span.label.label-default Marvel
-                    h4
-                      small.text-muted(style="font-family:courier,'new courier';")
-                        | 0 Reviews &bull;
-                        a.text-muted(href='#') Read More
+                  .row
+                    .col-xs-9
+                      h4
+                        span.label.label-default= hero.affiliation
+                      h4
+                        small.text-muted(style="font-family:courier,'new courier';")= hero.reviews.length
+                          |  Reviews &bull;
+                          a.text-muted(href='#') Read More
+                    |
+                    .col-xs-3
                   |
-                  .col-xs-3
-                |
-                br
-                br
-            |
-            hr
-            |
-            |
-            .row
-              br
+                  br
+                  br
               |
-              .col-md-2.col-sm-3.text-center
-                a.story-title(href='#')
-                  img.img-circle(alt='' src='https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/images/md/69-batman.jpg' style='width:100px;height:100px')
+              hr
               |
-              .col-md-10.col-sm-9
-                h3 Batman
-                |
-                .row
-                  .col-xs-9
-                    h4
-                      span.label.label-default DC
-                    h4
-                      small.text-muted(style="font-family:courier,'new courier';")
-                        | 8 Reviews &bull;
-                        a.text-muted(href='#') Read More
-                  |
-                  .col-xs-3
-                |
-                br
-                br
-            |
-            hr
-            |
-            .row
-              br
               |
-              .col-md-2.col-sm-3.text-center
-                a.story-title(href='#')
-                  img.img-circle(alt='' src='https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/images/md/374-juggernaut.jpg' style='width:100px;height:100px')
-              |
-              .col-md-10.col-sm-9
-                h3 Juggernaut
-                |
-                .row
-                  .col-xs-9
-                    h4
-                      span.label.label-default Marvel
-                    h4
-                      small.text-muted(style="font-family:courier,'new courier';")
-                        | 15 reviews &bull;
-                        a.text-muted(href='#') Read More
-                  |
-                  .col-xs-3
-                |
-                br
-                br
-            |
-            hr
-            |
-            |
-            .row
-              br
-              |
-              .col-md-2.col-sm-3.text-center
-                a.story-title(href='#')
-                  img.img-circle(alt='' src='https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/images/md/717-wolverine.jpg' style='width:100px;height:100px')
-              |
-              .col-md-10.col-sm-9
-                h3 Wolverine
-                |
-                .row
-                  .col-xs-9
-                    h4
-                      span.label.label-default Marvel
-                    h4
-                      small.text-muted(style="font-family:courier,'new courier';")
-                        | 3 Reviews &bull;
-                        a.text-muted(href='#') Read More
-                  |
-                  .col-xs-3
-                |
-                br
-                br
-            |
-            hr
             // /stories
             a.btn.btn-primary.pull-right.btnNext(href='/')
               | More
