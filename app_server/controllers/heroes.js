@@ -1,33 +1,35 @@
+const mongoose = require('mongoose');
+const Hero = mongoose.model('Heroe');
+
 const homelist = (req, res) => {
+  // Grab all heroes out of the database
+  var query = Hero.find({'publishers': 'DC'});
+
+  query.exec((err, results) => {
+    err = {status: '404',
+          stack: 'Happened somewhere over there'
+  }
+    if (err) {
+      return handleError(req, res, err);
+    }
+    const heroes = results.map((result) => {
+      return result.toObject();
+    });
+    renderHomepage(req, res, heroes);
+  });
+};
+
+const handleError = (req, res, error) => {
+  res.render('error', {
+    message: 'Unable to load page',
+    error
+  });
+};
+
+const renderHomepage = (req, res, responseBody) => {
   res.render('index', {
     title: 'Home',
-    heroes: [
-      {
-        name: 'Spiderman',
-        image_url:
-          'https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/images/md/620-spider-man.jpg',
-        affiliation: 'Marvel',
-        reviews: [
-          {
-            name: 'Joe Bum',
-            rating: 1,
-            review: 'I could do what he does',
-          },
-          {
-            name: 'Jill Awesome',
-            rating: 5,
-            review: "He's the friendly neighborhood spiderman",
-          },
-        ],
-      },
-      {
-        name: 'Iron Man',
-        image_url:
-          'https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/images/lg/346-iron-man.jpg',
-        affiliation: 'Marvel',
-        reviews: [],
-      },
-    ],
+    heroes: responseBody,
   });
 };
 

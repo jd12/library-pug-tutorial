@@ -30,7 +30,7 @@ block content
                 |
                 .col-md-2.col-sm-3.text-center
                   a.story-title(href='#')
-                    img.img-circle(alt='' src=hero.image_url style='width:100px;height:100px')
+                    img.img-circle(src=hero.imageUrl alt='Hero Image' style='width:100px;height:100px')
                 |
                 .col-md-10.col-sm-9
                   h3= hero.name
@@ -38,7 +38,7 @@ block content
                   .row
                     .col-xs-9
                       h4
-                        span.label.label-default= hero.affiliation
+                        span.label.label-default= hero.publisher
                       h4
                         small.text-muted(style="font-family:courier,'new courier';")= hero.reviews.length
                           |  Reviews &bull;
