@@ -29,8 +29,8 @@ block content
                 br
                 |
                 .col-md-2.col-sm-3.text-center
-                  a.story-title(href='#')
-                    img.img-circle(src=hero.imageUrl alt='Hero Image' style='width:100px;height:100px')
+                  a.story-title(href=`/hero/${hero._id}`)
+                    img.img-circle(src=hero.image_url alt='Hero Image' style='width:100px;height:100px')
                 |
                 .col-md-10.col-sm-9
                   h3= hero.name
@@ -42,7 +42,7 @@ block content
                       h4
                         small.text-muted(style="font-family:courier,'new courier';")= hero.reviews.length
                           |  Reviews &bull;
-                          a.text-muted(href='#') Read More
+                          a.text-muted(href=`/hero/${hero._id}`) Read More
                     |
                     .col-xs-3
                   |

@@ -21,6 +21,10 @@ const heroSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  api_id: {
+    type: Number,
+    required: true,
+  },
   publisher: String,
   rating: {
     type: Number,

@@ -27,24 +27,29 @@ block content
             .row
               br
               |
-              .col-md-2.col-sm-3.text-center
+              .col-md-6.col-sm-6.text-center
                 a.story-title(href='#')
-                  img.img-circle(alt='' src='https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/images/md/620-spider-man.jpg' style='width:100px;height:100px')
+                  img(alt='' src=hero.images.md)
               |
-              .col-md-10.col-sm-9
-                h3 Spiderman
+              .col-md-6.col-sm-6
+                h1= hero.name
+                |
+                hr
                 |
                 .row
                   .col-xs-9
                     h4
-                      span.label.label-default Marvel
-                    h4
-                      small.text-muted(style="font-family:courier,'new courier';")
-                        | 3 Reviews  &bull;
-                        a.text-muted(href='#') Read More
+                      span.label.label-default= hero.biography.publisher.split(' ')[0]
+                    h2 Stats
                   |
                   .col-xs-3
                 |
+                each value, key in hero.powerstats
+                  .row
+                    .col-xs-9
+                      h4
+                        small.text-muted= key.toUpperCase()
+                          |: #{value}
                 br
                 br
             |
