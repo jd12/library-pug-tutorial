@@ -15,7 +15,7 @@ const heroInfo = (req, res) => {
       qs: { id: hero.api_id },
       headers: {
         'x-rapidapi-host': 'superhero-search.p.rapidapi.com',
-        'x-rapidapi-key': '<REPLACE WITH YOUR API KEY>',
+        'x-rapidapi-key': '0404f80475msh8d9a06d13ecc424p1fe049jsncb15fbe9c101',
         useQueryString: true,
       },
     };
@@ -24,7 +24,7 @@ const heroInfo = (req, res) => {
       if (error) {
         renderErrorPage(req, res, error);
       }
-      renderHeroInfoPage(req, res, JSON.parse(body));
+      renderHeroInfoPage(req, res, hero, JSON.parse(body));
     });
   });
 };
@@ -37,7 +37,7 @@ const renderErrorPage = (req, res, error) => {
 };
 
 const renderHeroInfoPage = (req, res, hero, hero_api) => {
-  res.render('hero-info', { title: 'Hero Info', hero });
+  res.render('hero-info', { title: 'Hero Info', hero, hero_api });
 };
 
 module.exports = {

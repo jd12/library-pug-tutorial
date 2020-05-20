@@ -1,5 +1,7 @@
 extends layout
 
+include _includes/sharedHTMLfunctions
+
 block content
   #masthead
     .container
@@ -29,7 +31,7 @@ block content
               |
               .col-md-6.col-sm-6.text-center
                 a.story-title(href='#')
-                  img(alt='' src=hero.images.md)
+                  img(alt='' src=hero_api.images.md)
               |
               .col-md-6.col-sm-6
                 h1= hero.name
@@ -39,12 +41,12 @@ block content
                 .row
                   .col-xs-9
                     h4
-                      span.label.label-default= hero.biography.publisher.split(' ')[0]
+                      span.label.label-default= hero_api.biography.publisher.split(' ')[0]
                     h2 Stats
                   |
                   .col-xs-3
                 |
-                each value, key in hero.powerstats
+                each value, key in hero_api.powerstats
                   .row
                     .col-xs-9
                       h4
@@ -55,7 +57,20 @@ block content
             |
             hr
             |
-            |
             // Add Review Button
-            a.btn.btn-primary.pull-right.btnNext(href='/')
+            a.btn.btn-primary.pull-right.btnNext(href=`/hero/${hero._id}/review/new`)
               | Add Review
+            h1 Reviews
+            // Sort reviews by date (newest to oldest)
+            - hero.reviews.sort(function(a, b) {return b.createdOn - a.createdOn;})
+            each review in hero.reviews
+              .row.review
+                .col-12.review-header
+                  span.rating
+                    +outputRating(review.rating)
+                  span.review-author #{review.author}
+                  small.review-timestamp
+                    +formatDate(review.createdOn)
+                .col-12
+                  p !{(review.reviewText).replace(/\n/g, '<br/>')}
+                  hr
